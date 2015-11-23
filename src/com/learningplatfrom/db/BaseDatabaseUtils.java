@@ -12,7 +12,7 @@ public class BaseDatabaseUtils {
 	 private static final String databasePath = "jdbc:mysql://localhost:3306/learningplatfrom";
 	 private static final String driverPath = "com.mysql.jdbc.Driver";
 	 private String userName = "root";
-	 private String password = "beyonddream";
+	 private String password = "beyonddream123";
 	 Connection connection = null;
 	 public BaseDatabaseUtils(){
 		 try {
@@ -84,9 +84,10 @@ public class BaseDatabaseUtils {
 	 * @param rowName	  某一记录的某字段中的值
 	 * @return 	该值是否在数据库中对应有记录，如果有，则返回true,否则返回false
 	 */
-	public boolean isExsitNote(String tableName,String rowName){   
+	public boolean isExsitNote(String tableName,String rowName,String valueStr){   
 		 //根据数据库中某一字段查询该字段在数据库中是否存在记录，该方法用于查找主键或者唯一标识记录的字段
-		 String selectStr = "SELECT mAccount FROM "+tableName+" WHERE mAccount='"+rowName+"'";
+		 String selectStr = "SELECT "+rowName+" FROM "+tableName+" WHERE "+rowName+"='"+valueStr+"'";
+		 System.out.println(selectStr);
 		 Statement statement =null;
 		 try {
 			statement = connection.createStatement();
