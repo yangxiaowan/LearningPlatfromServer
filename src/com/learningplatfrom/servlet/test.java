@@ -1,26 +1,30 @@
 package com.learningplatfrom.servlet;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import com.learningplatfrom.db.BaseDatabaseUtils;
 
 public class test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		 BaseDatabaseUtils databaseUtils = new BaseDatabaseUtils();
 		 Connection connection = databaseUtils.getDatabaseConnection();
-		 boolean isExsit = databaseUtils. isExsitNote("user","mAccount","yangwan");
-		 if(isExsit){
-			 System.out.print("存在该记录");
+		 
+		 if(databaseUtils.isRightNote("user", "mPassword", "mAccount", "yangwanwan", "yangwan23")){
+			 System.out.println("YES");
 		 }else{
-			 System.out.println("不存在该记录");
+			 System.out.println("No");
 		 }
-		 String insertStr = "Insert into user (mAccount,mPassword,mEmail)Values('yangyangyang','password','123@qq')";
-		 if(databaseUtils.UpDateDatabase(insertStr)){
-			 System.out.println("注册成功");
-		 }else{
-			 System.out.println("注册失败");
-		 }
+		
 	}
-
+	
+}
+class student{
+	int age;
+	String name;
+	public student(int age,String name){
+		this.age = age;
+		this.name = name;
+	}
 }
